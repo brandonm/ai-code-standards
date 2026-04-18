@@ -60,16 +60,16 @@ Every generated standards file includes these sections:
 
 ## Installation
 
-### Claude Code (via GitHub)
+### Claude Code (via marketplace)
+
+Two-step install — add the marketplace, then install the plugin:
 
 ```bash
-claude plugin add github:brandonm/ai-code-standards
-```
+# Step 1: Add the marketplace
+claude plugin marketplace add brandonm/ai-code-standards
 
-### Claude Code (via npm)
-
-```bash
-claude plugin add ai-code-standards
+# Step 2: Install the plugin
+claude plugin install ai-code-standards
 ```
 
 ### Manual

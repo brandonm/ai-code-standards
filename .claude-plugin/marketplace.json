@@ -1,0 +1,24 @@
+{
+  "name": "ai-code-standards",
+  "owner": {
+    "name": "brandonm"
+  },
+  "metadata": {
+    "description": "Engineering standards generator for AI coding assistants — composable fragments for testing, security, code review, and more."
+  },
+  "plugins": [
+    {
+      "name": "ai-code-standards",
+      "source": {
+        "source": "github",
+        "repo": "brandonm/ai-code-standards"
+      },
+      "description": "Generate tailored engineering standards files for AI coding assistants by composing modular fragments based on stack, domain, team size, and regulatory requirements.",
+      "version": "1.0.0",
+      "author": {
+        "name": "brandonm"
+      },
+      "skills": "./project-standards"
+    }
+  ]
+}
