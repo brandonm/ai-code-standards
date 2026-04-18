@@ -1,0 +1,29 @@
+{
+  "name": "ai-code-standards",
+  "version": "1.0.0",
+  "description": "Generate tailored engineering standards files for AI coding assistants by composing modular fragments based on your stack, domain, and team size.",
+  "keywords": [
+    "claude-code",
+    "claude-code-skill",
+    "ai-coding",
+    "code-standards",
+    "engineering-standards",
+    "CLAUDE.md",
+    "code-quality",
+    "testing",
+    "security",
+    "code-review"
+  ],
+  "author": "Brandon",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brandon/ai-code-standards"
+  },
+  "homepage": "https://github.com/brandon/ai-code-standards#readme",
+  "skills": {
+    "project-standards": {
+      "path": "project-standards"
+    }
+  }
+}
