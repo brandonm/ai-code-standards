@@ -18,9 +18,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/brandon/ai-code-standards"
+    "url": "https://github.com/brandonm/ai-code-standards"
   },
-  "homepage": "https://github.com/brandon/ai-code-standards#readme",
+  "homepage": "https://github.com/brandonm/ai-code-standards#readme",
   "skills": {
     "project-standards": {
       "path": "project-standards"

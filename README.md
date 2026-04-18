@@ -63,7 +63,7 @@ Every generated standards file includes these sections:
 ### Claude Code (via GitHub)
 
 ```bash
-claude plugin add github:brandon/ai-code-standards
+claude plugin add github:brandonm/ai-code-standards
 ```
 
 ### Claude Code (via npm)
@@ -77,7 +77,7 @@ claude plugin add ai-code-standards
 Clone the repo and copy the `project-standards/` directory to your skills location:
 
 ```bash
-git clone https://github.com/brandon/ai-code-standards.git
+git clone https://github.com/brandonm/ai-code-standards.git
 cp -r ai-code-standards/project-standards ~/.claude/skills/project-standards
 ```
 
