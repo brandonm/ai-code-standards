@@ -78,6 +78,7 @@ Clone the repo and copy the `project-standards/` directory to your skills locati
 
 ```bash
 git clone https://github.com/brandonm/ai-code-standards.git
+mkdir -p ~/.claude/skills
 cp -r ai-code-standards/project-standards ~/.claude/skills/project-standards
 ```
 
