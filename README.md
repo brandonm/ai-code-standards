@@ -1,15 +1,17 @@
-# ai-code-standards
+# AI Code Standards
 
-Generate tailored engineering standards files for AI coding assistants. Instead of copy-pasting rules or maintaining a single static file, this skill composes modular fragments based on your project's stack, domain, team size, and regulatory requirements.
+A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) plugin that generates tailored engineering standards files (`CLAUDE.md`) for any project. Instead of copy-pasting rules or maintaining a monolithic config, it composes modular, opinionated fragments based on your stack, domain, team size, and compliance requirements.
 
-## What It Does
+**Problem:** AI coding assistants produce better code when given clear project-specific rules — but writing and maintaining those rules is tedious, error-prone, and rarely done well.
 
-Generates a comprehensive standards file (e.g., `CLAUDE.md`) for your project by:
+**Solution:** Auto-detect your stack, ask a short questionnaire, and assemble a comprehensive standards file from battle-tested fragments covering testing, security, code review, git hygiene, and more.
 
-1. **Detecting** your stack from manifest files (`package.json`, `build.gradle`, `go.mod`, etc.)
-2. **Asking** a short questionnaire to fill in what can't be auto-detected
-3. **Composing** modular fragments into a single, tailored standards file
-4. **Merging** with any existing standards file — never clobbering your additions
+## How It Works
+
+1. **Auto-detects** your stack from manifest files (`package.json`, `build.gradle`, `go.mod`, `Cargo.toml`, etc.)
+2. **Asks** a short questionnaire for what can't be inferred (team size, domain, compliance needs)
+3. **Composes** modular fragments into a single, tailored standards file
+4. **Merges** non-destructively with any existing standards — never overwrites your additions
 
 ## Supported Stacks
 
@@ -157,14 +159,17 @@ project-standards/
 
 Each fragment is standalone and order-independent. Edit any fragment directly — changes apply to all future generations. Existing generated files are not affected until regenerated.
 
-## Design Principles
+## Architecture
 
+The plugin uses a **fragment composition** pattern — each concern (testing, security, accessibility, etc.) lives in its own standalone Markdown fragment with metadata headers for tier and dependencies. At generation time, fragments are selected based on detected stack and user inputs, then assembled via a template with variable substitution. This keeps each fragment independently editable and testable without affecting others.
+
+Design principles:
 - **Simple, explicit, boring** — no clever meta-logic, mostly substitution and concatenation
 - **Composable fragments** — standalone, order-independent, each works if included alone
-- **Include "why" comments** — prevent cargo-culting by explaining the reason behind each rule
-- **Detect before asking** — auto-detect what we can, confirm with the user
-- **Never clobber** — always check for existing files, merge rather than overwrite
-- **Verify commands** — every command in a stack fragment must be real, never invented
+- **Detect before asking** — auto-detect what we can from manifest files, confirm with the user
+- **Never clobber** — always diff/merge with existing files, preserving user additions
+- **Verified commands only** — every CLI command in a fragment is validated against real tool docs
+- **Include "why" comments** — every rule explains its rationale to prevent cargo-culting
 
 ## Contributing
 
