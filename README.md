@@ -64,35 +64,49 @@ Every generated standards file includes these sections:
 
 ### Claude Code (via marketplace)
 
-Two-step install — add the marketplace, then install the plugin:
+Two-step install inside Claude Code — add the marketplace, then install the plugin:
 
-```bash
-# Step 1: Add the marketplace
-claude plugin marketplace add brandonm/ai-code-standards
-
-# Step 2: Install the plugin
-claude plugin install ai-code-standards
+```
+/plugin marketplace add brandonm/ai-code-standards
+/plugin install code-standards@code-standards
 ```
 
-### Manual
+The CLI equivalent (outside an interactive session) is:
 
-Clone the repo and copy the `project-standards/` directory to your skills location:
+```bash
+claude plugin marketplace add brandonm/ai-code-standards
+claude plugin install code-standards@code-standards
+```
+
+### Manual (standalone skill, no plugin install)
+
+If you'd rather just drop the skill into your `~/.claude/skills/` directory and skip the plugin namespace:
 
 ```bash
 git clone https://github.com/brandonm/ai-code-standards.git
 mkdir -p ~/.claude/skills
-cp -r ai-code-standards/project-standards ~/.claude/skills/project-standards
+cp -r ai-code-standards/skills/generating-code-standards ~/.claude/skills/generating-code-standards
+```
+
+Standalone, the skill is available as `/generating-code-standards` (no plugin prefix).
+
+### Local development
+
+To test the plugin without installing, run Claude Code with `--plugin-dir`:
+
+```bash
+claude --plugin-dir /path/to/ai-code-standards
 ```
 
 ## Usage
 
-Once installed, invoke the skill in Claude Code:
+Once installed as a plugin, invoke the skill in Claude Code:
 
 ```
-/project-standards
+/code-standards:generating-code-standards
 ```
 
-Or ask naturally:
+Or ask naturally — the description triggers it without typing the slash command:
 
 > "Generate engineering standards for this project"
 > "Create a CLAUDE.md for this repo"
@@ -107,36 +121,40 @@ The skill will:
 ## Project Structure
 
 ```
-project-standards/
-  SKILL.md                         # Skill entry point and workflow
-  questionnaire.md                 # Questions to gather inputs
-  template.md                      # Assembly skeleton with conditionals
-  fragments/
-    honesty.md                     # Uncertainty protocol
-    boundaries.md                  # Do-not-do list
-    boundaries-solo.md             # Relaxed rules for solo devs
-    boundaries-team.md             # Stricter rules for teams
-    testing-universal.md           # Testing philosophy and gates
-    testing-java-gradle.md         # JaCoCo, Gradle commands
-    testing-go.md                  # go test, coverage
-    testing-python.md              # pytest, coverage.py
-    testing-node.md                # Vitest/Jest, c8
-    testing-rust.md                # cargo test, llvm-cov
-    testing-frontend.md            # Playwright, visual regression, a11y
-    testing-react.md               # React Testing Library, MSW
-    testing-vue.md                 # Vue Test Utils, Pinia
-    review-gate.md                 # Self-review + AI review checklist
-    security-generic.md            # Secrets, SAST, SCA, auth
-    security-regulated.md          # PII/PHI/PCI additions
-    plan-act-reflect.md            # Workflow for non-trivial changes
-    git-hygiene.md                 # Commit and branch conventions
-    ui-accessibility.md            # WCAG 2.1 AA rules
-    data-privacy.md                # Data handling and retention
-  examples/
-    java-gradle-backend.md         # Single-stack backend example
-    java-react-fullstack.md        # Multi-stack full-stack example
-    python-data-pipeline.md        # Solo dev, data pipeline example
-    typescript-react-app.md        # Frontend web app example
+.claude-plugin/
+  plugin.json                      # Plugin manifest (name, version, metadata)
+  marketplace.json                 # Marketplace catalog listing this plugin
+skills/
+  generating-code-standards/
+    SKILL.md                       # Skill entry point and workflow
+    questionnaire.md               # Questions to gather inputs
+    template.md                    # Assembly skeleton with conditionals
+    fragments/
+      honesty.md                   # Uncertainty protocol
+      boundaries.md                # Do-not-do list
+      boundaries-solo.md           # Relaxed rules for solo devs
+      boundaries-team.md           # Stricter rules for teams
+      testing-universal.md         # Testing philosophy and gates
+      testing-java-gradle.md       # JaCoCo, Gradle commands
+      testing-go.md                # go test, coverage
+      testing-python.md            # pytest, coverage.py
+      testing-node.md              # Vitest/Jest, c8
+      testing-rust.md              # cargo test, llvm-cov
+      testing-frontend.md          # Playwright, visual regression, a11y
+      testing-react.md             # React Testing Library, MSW
+      testing-vue.md               # Vue Test Utils, Pinia
+      review-gate.md               # Self-review + AI review checklist
+      security-generic.md          # Secrets, SAST, SCA, auth
+      security-regulated.md        # PII/PHI/PCI additions
+      plan-act-reflect.md          # Workflow for non-trivial changes
+      git-hygiene.md               # Commit and branch conventions
+      ui-accessibility.md          # WCAG 2.1 AA rules
+      data-privacy.md              # Data handling and retention
+    examples/
+      java-gradle-backend.md       # Single-stack backend example
+      java-react-fullstack.md      # Multi-stack full-stack example
+      python-data-pipeline.md      # Solo dev, data pipeline example
+      typescript-react-app.md      # Frontend web app example
 ```
 
 ## Extending

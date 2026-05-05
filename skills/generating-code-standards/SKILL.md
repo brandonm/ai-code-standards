@@ -1,5 +1,5 @@
 ---
-name: generating-project-standards
+name: generating-code-standards
 description: Use when initializing a new project, onboarding a repo without a CLAUDE.md, or when the user asks to generate, create, or set up engineering standards. Triggers on "generate standards", "create CLAUDE.md", "set up project rules", "initialize project standards", "add engineering standards".
 ---
 

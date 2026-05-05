@@ -1,0 +1,18 @@
+{
+  "name": "code-standards",
+  "description": "Generate tailored CLAUDE.md engineering standards files by composing modular fragments based on stack, domain, team size, and regulatory requirements.",
+  "version": "1.0.0",
+  "author": {
+    "name": "brandonm"
+  },
+  "homepage": "https://github.com/brandonm/ai-code-standards",
+  "repository": "https://github.com/brandonm/ai-code-standards",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "code-standards",
+    "engineering-standards",
+    "CLAUDE.md",
+    "code-quality"
+  ]
+}
